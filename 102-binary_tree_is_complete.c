@@ -1,16 +1,5 @@
 #include "binary_trees.h"
 
-/**
- * struct levelorder_queue_s - Level order traversal queue.
- * @node: A node of a binary tree.
- * @next: The next node to traverse to in the binary tree.
- */
-typedef struct levelorder_queue_s
-{
-	binary_tree_t *node;
-	struct levelorder_queue_s *next;
-} levelorder_queue_t;
-
 levelorder_queue_t *create_node(binary_tree_t *node);
 void free_queue(levelorder_queue_t *head);
 void push(binary_tree_t *node, levelorder_queue_t *head,
