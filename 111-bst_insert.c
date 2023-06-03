@@ -4,8 +4,8 @@
  * bst_insert_helper - inserts the node at the suppossed location.
  * @tree: double pointer to the root node of a binary search tree.
  * @newNode: node to insert in a binary search tree
- * @check: 0 if value not in bst.
- * 	Otherwise adjusted to 1 if value exist in bst
+ * @check: 0 if value not in bst.Otherwise adjusted
+ *to 1 if value exist in bst
  * Return: pointer to the root node of a binary search tree.
  */
 
