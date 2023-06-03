@@ -30,7 +30,8 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 	else if (!tree->left->left)
 	{
 		tree->left->left = tmp2;
-		tree->left->left->parent = tree->left;
+		if (tmp2)
+			tree->left->left->parent = tree->left;
 	}
 
 	return (tree);
