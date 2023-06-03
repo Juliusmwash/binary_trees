@@ -9,7 +9,7 @@
  * Return: pointer to the root node of a binary search tree.
  */
 
-void bst_insert_helper(bst_t **tree, bst_t *newNode, int *check)
+void arr_bst_insert_helper(bst_t **tree, bst_t *newNode, int *check)
 {
 	if (!(*tree))
 	{
@@ -19,7 +19,7 @@ void bst_insert_helper(bst_t **tree, bst_t *newNode, int *check)
 	else if (newNode->n < (*tree)->n)
 	{
 		if ((*tree)->left)
-			bst_insert_helper(&(*tree)->left, newNode, check);
+			arr_bst_insert_helper(&(*tree)->left, newNode, check);
 		else
 		{
 			newNode->parent = (*tree);
@@ -29,7 +29,7 @@ void bst_insert_helper(bst_t **tree, bst_t *newNode, int *check)
 	else if (newNode->n > (*tree)->n)
 	{
 		if ((*tree)->right)
-			bst_insert_helper(&(*tree)->right, newNode, check);
+			arr_bst_insert_helper(&(*tree)->right, newNode, check);
 		else
 		{
 			newNode->parent = (*tree);
@@ -44,25 +44,26 @@ void bst_insert_helper(bst_t **tree, bst_t *newNode, int *check)
 }
 
 /**
- * bst_insert - calls the bst_insert_helper which does the insertion.
+ * array_to_bst - calls the bst_insert_helper which does the insertion.
  * @tree: double pointer to the root node of a binary search tree.
- * @value: value to add to the node to be inserted.
+ * @size: size of the array containing values to add to bst.
  * Return: pointer to the root node of a binary search tree.
  */
 
-bst_t *bst_insert(bst_t **tree, int value)
+bst_t *array_to_bst(int *array, size_t size)
 {
-	bst_t *newNode;
-	int check = 0;
+	bst_t *tree, *newNode;
+	int check = 0, i = 0;
 
-	newNode = binary_tree_node(NULL, value);
-	if (!newNode)
-		return (NULL);
-	bst_insert_helper(tree, newNode, &check);
-	if (check)
+	while (i < size)
 	{
-		free(newNode);
-		return (NULL);
+		newNode = binary_tree_node(NULL, array[i]);
+		if (!newNode)
+			return (NULL);
+		arr_bst_insert_helper(&tree, newNode, &check);
+		if (check)
+			free(newNode);
+		i++;
 	}
-	return (newNode);
+	return (tree);
 }
