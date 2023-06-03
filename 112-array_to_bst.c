@@ -10,7 +10,7 @@
 bst_t *array_to_bst(int *array, size_t size)
 {
 	bst_t *tree;
-	int i = 0;
+	size_t i = 0;
 
 	tree = NULL;
 	while (i < size)
