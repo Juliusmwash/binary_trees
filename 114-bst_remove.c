@@ -1,5 +1,11 @@
 #include "binary_trees.h"
 
+/**
+ * look_for_successor - finds the successor of the node to be removed.
+ * @node: double pointer to the node to be removed.
+ * Return: successor node.
+ */
+
 bst_t *look_for_successor(bst_t **node)
 {
 	bst_t *tmp;
@@ -12,6 +18,12 @@ bst_t *look_for_successor(bst_t **node)
 	}
 	return (tmp);
 }
+
+/**
+ * remove_node_no_successor - removes node with no successor.
+ * @node: double pointer to the node to be removed.
+ * Return: Nothing.
+ */
 
 void remove_node_no_successor(bst_t **node)
 {
@@ -27,6 +39,14 @@ void remove_node_no_successor(bst_t **node)
 		(*node)->parent = tmp->parent;
 	free(tmp);
 }
+
+/**
+ * remove_node_with_successor - removes node and replaces it with a successor.
+ * @remNode: double pointer to the  node to be removed.
+ * @node: double pointer to the successor node.
+ * @check: checks if a successor node has a node on its left pointer.
+ * Return: Nothing.
+ */
 
 void remove_node_with_successor(bst_t **remNode, bst_t **node, int check)
 {
@@ -47,6 +67,13 @@ void remove_node_with_successor(bst_t **remNode, bst_t **node, int check)
 	free(*node);
 
 }
+
+/**
+ * bst_remove_helper - facilitates removal of a node.
+ * @root: double pointer to the root node of a bst.
+ * @value: value to be removed from a binary search tree.
+ * Return: Nothing.
+ */
 
 void bst_remove_helper(bst_t **root, int value)
 {
@@ -72,8 +99,14 @@ void bst_remove_helper(bst_t **root, int value)
 	}
 	bst_remove((*root)->right, value);
 	}
-	return;
 }
+
+/**
+ * bst_remove - calls the function which does the node removal.
+ * @root: pointer to the root node of a bst.
+ * @value: value to be removed.
+ * Return: root node of a resulting bst.
+ */
 
 bst_t *bst_remove(bst_t *root, int value)
 {
