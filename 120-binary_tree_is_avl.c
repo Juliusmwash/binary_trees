@@ -100,7 +100,7 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	int balanceCheck = 0, avlValid = 0, dupCheck = 0;
 
 	if (!tree)
-		return (1);
+		return (0);
 
 	avl_duplicate_check_caller(tree, &dupCheck);
 	if (dupCheck)
