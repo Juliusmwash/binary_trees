@@ -3,12 +3,12 @@
 avl_t *rotationAfterDeletion(avl_t *root);
 
 /**
- * findSuccessorNode2 - finds the successor node.
+ * findSuccessorNode - finds the successor node.
  * @node: node from which the search is to begin.
  * Return: successor node.
  */
 
-avl_t *findSuccessorNode2(avl_t *node)
+avl_t *findSuccessorNode(avl_t *node)
 {
 	avl_t *current;
 
@@ -60,7 +60,7 @@ avl_t *avl_remove(avl_t *root, int key)
 		else
 		{
 			/* Node with two children */
-			temp = findSuccessorNode2(root->right);
+			temp = findSuccessorNode(root->right);
 			/* Copy the successor's data to this node */
 			root->n = temp->n;
 			/* Delete the successor */
@@ -84,8 +84,10 @@ avl_t *avl_remove(avl_t *root, int key)
 
 avl_t *rotationAfterDeletion(avl_t *root)
 {
+	int balanceFactor;
+
 	/* Check the balance factor and perform rotations if needed */
-	int balanceFactor = binary_tree_balance(root);
+	balanceFactor = binary_tree_balance(root);
 	/* Left Left Case */
 	if (balanceFactor > 1 && binary_tree_balance(root->left) >= 0)
 		return (rotateRight(&root));
