@@ -78,5 +78,12 @@ heap_t *heap_insert(heap_t **root, int value);
 heap_t *array_to_heap(int *array, size_t size);
 int heap_extract(heap_t **root);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
+
+
 int binary_tree_height2(const binary_tree_t *tree);
+avl_t *rotationFunction(avl_t **root, int key);
+avl_t *rotateRight(avl_t **y);
+avl_t *rotateLeft(avl_t **x);
+avl_t *insertNode(avl_t **root, int key, avl_t **createdNode);
+
 #endif /*BINARY_TREES_H*/
