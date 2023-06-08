@@ -25,7 +25,7 @@ avl_t *findSuccessorNode(avl_t *node)
  * Return: root node to the avl tree after remival of the key.
  */
 
-avl_t *avl_remove(avl_t *root, int key)
+avl_t *avl_remove(avl_t *root, int value)
 {
 	avl_t *temp;
 
@@ -34,10 +34,10 @@ avl_t *avl_remove(avl_t *root, int key)
 
 	/* Perform normal BST delete */
 
-	if (key < root->n)
-		root->left = avl_remove(root->left, key);
-	else if (key > root->n)
-		root->right = avl_remove(root->right, key);
+	if (value < root->n)
+		root->left = avl_remove(root->left, value);
+	else if (value > root->n)
+		root->right = avl_remove(root->right, value);
 	else
 	{
 		/* Node with only one child or no child */
