@@ -13,12 +13,13 @@
 avl_t *helper_func(int *array, int start, int end, avl_t *parent)
 {
 	int mid;
+	avl_t *root;
 
 	if (start > end)
 		return (NULL);
 
 	mid = (start + end) / 2;
-	avl_t *root = binary_tree_node(parent, array[mid]);
+	root = binary_tree_node(parent, array[mid]);
 
 	if (root == NULL)
 		return (NULL);
